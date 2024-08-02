@@ -12,15 +12,15 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIRE_BASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIRE_BASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIRE_BASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIRE_BASE_MEASUREMENT_ID
+  measurementId: process.env.NEXT_PUBLIC_FIRE_BASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const fireStore=getFirestore(app);
+const fireStore = getFirestore(app);
 
-module.exports={
+module.exports = {
   fireStore,
   analytics,
-}
+};
