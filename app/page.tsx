@@ -1,10 +1,13 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const Home = () => {
   return (
     <Box>
-      Home Page
+      <Typography>My Pantry Tracker®</Typography>
+      <Typography>Download My Pantry Tracker now for free to keep an organized inventory of your pantry!</Typography>
+      <Typography>Automatically add items manually or with your device’s camera!</Typography>
+      
     </Box>
   )
 }
