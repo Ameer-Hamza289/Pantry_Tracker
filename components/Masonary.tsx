@@ -1,9 +1,7 @@
 'use client';
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Masonry from '@mui/lab/Masonry';
 import { styled } from '@mui/material/styles';
+import { Card, Typography, Paper, Box } from '@mui/material';
 
 const Label = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -17,24 +15,30 @@ const Label = styled(Paper)(({ theme }) => ({
 
 export default function MasonryLayout() {
   return (
-    <Box sx={{  minHeight: 829 }}>
-      <Masonry columns={12} spacing={2}>
+    <Box sx={{ minHeight: 829 }}>
+      <Masonry columns={3} spacing={3}>
         {itemData.map((item, index) => (
-          <div key={index}>
-            <Label>{index + 1}</Label>
-            <img
-              srcSet={`${item.img}?w=162&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=162&auto=format`}
-              alt={item.title}
-              loading="lazy"
-              style={{
-                borderBottomLeftRadius: 4,
-                borderBottomRightRadius: 4,
-                display: 'block',
-                width: '100%',
-              }}
-            />
-          </div>
+          <Card key={index} sx={{ width: '400px', borderRadius: 20 }}>
+            <Box>
+              <img
+                srcSet={`${item.img}`}
+                src={`${item.img}`}
+                alt={item.title}
+                loading="lazy"
+                style={{
+                  borderBottomLeftRadius: 4,
+                  borderBottomRightRadius: 4,
+                  display: 'block',
+                  height: '100%',
+                  width: '100%',
+                }}
+              />
+
+            </Box>
+            <Box>
+              <Typography textAlign='center'>{item.title}</Typography>
+            </Box>
+          </Card>
         ))}
       </Masonry>
     </Box>
