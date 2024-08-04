@@ -3,8 +3,8 @@ import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 
 const data = [
-  { id: 0, value: 10, label: 'All Items' },
-  { id: 1, value: 9, label: 'Fresh Items' },
+  { id: 0, value: 17, label: 'All Items' },
+  { id: 1, value: 16, label: 'Fresh Items' },
   { id: 2, value: 1, label: 'Expired Items' },
 ];
 
@@ -19,7 +19,8 @@ export default function PieActiveArc() {
         },
       ]}
       height={200}
-      colors={['red','green','yellow']}
+      // colors={['rgba(137, 196, 244,1)','green','yellow']}
+      colors={['rgba(44, 130, 201)','green','yellow']}
     />
   );
 }

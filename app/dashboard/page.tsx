@@ -16,13 +16,13 @@ const Dashboard = () => {
         <Grid item xs={4}>
           <Card sx={{ padding: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <Typography fontWeight={600}>Total Inventory Items</Typography>
-            <Typography fontSize={28} fontWeight={700}>10</Typography>
+            <Typography fontSize={28} fontWeight={700}>17</Typography>
           </Card>
         </Grid>
         <Grid item xs={4}>
           <Card sx={{ padding: 2, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <Typography fontWeight={600}>Fresh Items</Typography>
-            <Typography fontSize={28} fontWeight={700}>09</Typography>
+            <Typography fontSize={28} fontWeight={700}>16</Typography>
           </Card>
         </Grid>
         <Grid item xs={4}>
