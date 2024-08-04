@@ -1,24 +1,58 @@
 'use client';
 import Masonry from '@mui/lab/Masonry';
 import { styled } from '@mui/material/styles';
-import { Card, Typography, Paper, Box } from '@mui/material';
+import { Card, Typography, Box, IconButton } from '@mui/material';
+import { Edit, Delete } from '@mui/icons-material';
+import { useState } from 'react';
+import AlertDialog from './Dialog';
+// const Label = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//   ...theme.typography.body2,
+//   padding: theme.spacing(0.5),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+//   borderBottomLeftRadius: 0,
+//   borderBottomRightRadius: 0,
+// }));
 
-const Label = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(0.5),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  borderBottomLeftRadius: 0,
-  borderBottomRightRadius: 0,
-}));
+const CardWrapper = styled(Card)({
+  position: 'relative',
+  width: '400px',
+  borderRadius: 20,
+  overflow: 'hidden',
+  '&:hover .action-buttons': {
+    display: 'flex',
+  },
+});
+
+const ActionButtons = styled(Box)({
+  display: 'none',
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  flexDirection: 'column',
+  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  borderRadius: '0 0 0 10px',
+});
 
 export default function MasonryLayout() {
+  const [open,setOpen]=useState<boolean>(false);
+  const handleClose=()=>{
+    setOpen(!open)
+  }
   return (
     <Box sx={{ minHeight: 829 }}>
       <Masonry columns={3} spacing={3}>
         {itemData.map((item, index) => (
-          <Card key={index} sx={{ width: '400px', borderRadius: 20 }}>
+          <CardWrapper key={index}>
+            <ActionButtons className="action-buttons">
+              <IconButton size="small">
+                <Edit />
+              </IconButton>
+              <IconButton size="small" onClick={()=>setOpen(true)}>
+                <Delete />
+              </IconButton>
+            </ActionButtons>
             <Box>
               <img
                 srcSet={`${item.img}`}
@@ -26,21 +60,19 @@ export default function MasonryLayout() {
                 alt={item.title}
                 loading="lazy"
                 style={{
-                  borderBottomLeftRadius: 4,
-                  borderBottomRightRadius: 4,
                   display: 'block',
                   height: '100%',
                   width: '100%',
                 }}
               />
-
             </Box>
-            <Box>
-              <Typography textAlign='center'>{item.title}</Typography>
+            <Box paddingY={1}>
+              <Typography textAlign="center" fontWeight={600}>{item.title}</Typography>
             </Box>
-          </Card>
+          </CardWrapper>
         ))}
       </Masonry>
+      <AlertDialog description='Are you sure you want to delete this item?' title='Delete item' open={open} handleClose={handleClose} />
     </Box>
   );
 }
